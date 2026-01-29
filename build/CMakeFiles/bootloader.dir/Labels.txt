@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/mark/repositories/doormon/build/CMakeFiles/bootloader
+/home/mark/repositories/doormon/build/CMakeFiles/bootloader.rule
+/home/mark/repositories/doormon/build/CMakeFiles/bootloader-complete.rule
+/home/mark/repositories/doormon/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/mark/repositories/doormon/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/mark/repositories/doormon/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/mark/repositories/doormon/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/mark/repositories/doormon/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/mark/repositories/doormon/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/mark/repositories/doormon/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

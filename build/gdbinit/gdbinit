@@ -1,0 +1,2 @@
+source /home/mark/repositories/doormon/build/gdbinit/symbols
+source /home/mark/repositories/doormon/build/gdbinit/connect
