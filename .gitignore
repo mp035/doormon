@@ -45,3 +45,19 @@ Thumbs.db
 # Debug / core dumps
 *.core
 core
+
+# Python (scripts/)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+.venv/
+.env/
+*.egg-info/
+.eggs/
+*.egg
+
+# Optional local overrides (uncomment if you use them)
+# sdkconfig.local
+# .vscode/settings.json
