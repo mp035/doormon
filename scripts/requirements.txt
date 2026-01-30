@@ -1,0 +1,2 @@
+# For doormon_monitor.py: mDNS discovery (avoids slow system DNS for .local)
+zeroconf>=0.38.0

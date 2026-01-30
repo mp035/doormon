@@ -24,9 +24,12 @@ Makefile
 *.lst
 
 # ESP-IDF generated
+sdkconfig
+sdkconfig.*
 sdkconfig.old
 sdkconfig.defaults.old
 dependencies.lock
+managed_components/
 
 # IDE / editor (keep .vscode/extensions.json for project recommendations)
 .vscode/.browse.c_cpp.db*

@@ -79,6 +79,21 @@ curl http://192.168.1.100/status
 
 Replace `192.168.1.100` with your ESP32’s IP (shown in serial log at boot).
 
+## mDNS (doormon.local)
+
+The firmware advertises **doormon.local** on the LAN so you can reach the device by name (e.g. `http://doormon.local/status`) without knowing its IP. This needs the ESP-IDF mDNS component.
+
+PlatformIO’s bundled ESP-IDF doesn’t ship it, so add it locally:
+
+```bash
+git submodule add https://github.com/espressif/esp-protocols.git components/esp-protocols
+git submodule update --init --recursive
+```
+
+Then build as usual. After flashing, the device will appear as **doormon.local** on the same LAN.
+
+For a host-side monitor that discovers via mDNS and polls every second (reporting triggers and slow responses), see **scripts/doormon_monitor.py** and `scripts/README.md`.
+
 ## License
 
 Use and modify as you like. No warranty.

@@ -1,0 +1,4 @@
+## IDF Component Manager manifest
+## See https://docs.espressif.com/projects/idf-component-manager/
+dependencies:
+  espressif/mdns: "*"

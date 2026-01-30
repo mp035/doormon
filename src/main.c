@@ -24,13 +24,14 @@
 #include "nvs.h"
 #include "nvs_flash.h"
 #include "driver/gpio.h"
+#include "mdns.h"
 
 #include "lwip/err.h"
 #include "lwip/sys.h"
 
 /* WiFi – change these for your network */
-//#define WIFI_SSID      "Planet Express"
-#define WIFI_SSID      "FuturePointFactory"
+#define WIFI_SSID      "Planet Express"
+//#define WIFI_SSID      "FuturePointFactory"
 #define WIFI_PASSWORD  "Kelvinator"
 #define WIFI_CONNECT_TIMEOUT_MS  (60 * 1000)  /* Retry for ~60s at startup, then reboot */
 
@@ -41,6 +42,9 @@
 
 #define NVS_NAMESPACE  "doormon"
 #define NVS_KEY_TRIG   "triggered"
+
+#define MDNS_HOSTNAME  "doormon"
+#define MDNS_INSTANCE  "Doormon"
 
 static const char *TAG = "doormon";
 
@@ -280,6 +284,17 @@ void app_main(void)
     triggered_nvs_load();   /* restore triggered state across reboots */
 
     (void)wifi_init_sta();  /* returns only when connected; else reboots after timeout */
+
+    /* mDNS: advertise as doormon.local and _http._tcp on port 80 */
+    esp_err_t err = mdns_init();
+    if (err == ESP_OK) {
+        mdns_hostname_set(MDNS_HOSTNAME);
+        mdns_instance_name_set(MDNS_INSTANCE);
+        mdns_service_add(NULL, "_http", "_tcp", 80, NULL, 0);
+        ESP_LOGI(TAG, "mDNS: %s.local (_http._tcp port 80)", MDNS_HOSTNAME);
+    } else {
+        ESP_LOGW(TAG, "mDNS init failed: %s", esp_err_to_name(err));
+    }
 
     trigger_gpio_init();     /* configures GPIOs and sets LED from s_triggered */
     start_httpd();
